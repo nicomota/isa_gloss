@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pergunta para Isa</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fef3f3;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      position: relative;
+      min-height: 300px;
+    }
+
+    .question {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .no {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #stage2 .yes {
+      position: absolute;
+      left: 50%; /* posição inicial */
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="stage1">
+    <div class="question">Pronto para começar??</div>
+    <div class="buttons">
+      <button class="yes" onclick="goToStage2()">Sim</button>
+      <button class="no" onclick="alert('Ahh que pena 😢')">Não</button>
+    </div>
+  </div>
+
+  <div class="container" id="stage2" style="display:none;">
+    <div class="question">A Isa vai ganhar um gloss?</div>
+    <button class="yes" id="btnSim">Sim</button>
+    <button class="no" onclick="alert('Tadinha da Isa 😭')">Não</button>
+  </div>
+
+  <script>
+    function goToStage2() {
+      document.getElementById("stage1").style.display = "none";
+      document.getElementById("stage2").style.display = "block";
+    }
+
+    function moveButton() {
+      const btn = document.getElementById("btnSim");
+      const container = document.getElementById("stage2");
+      const maxX = container.clientWidth - btn.offsetWidth;
+      const maxY = container.clientHeight - btn.offsetHeight;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      btn.style.left = randomX + "px";
+      btn.style.top = randomY + "px";
+      btn.style.transform = "none"; // remove o centrado inicial
+    }
+
+    const btnSim = document.getElementById("btnSim");
+    btnSim.addEventListener("mouseover", moveButton);
+    btnSim.addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      moveButton();
+    });
+  </script>
+</body>
+</html>
