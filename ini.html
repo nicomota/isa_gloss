@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pergunta para Isa</title>
-  <style>
-    * {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -66,10 +68,8 @@
       top: 50%;
       transform: translate(-50%, -50%);
     }
-  </style>
-</head>
-<body>
-  <div class="container" id="stage1">
+    </style>
+      <div class="container" id="stage1">
     <div class="question">Pronto para começar??</div>
     <div class="buttons">
       <button class="yes" onclick="goToStage2()">Sim</button>
@@ -82,9 +82,9 @@
     <button class="yes" id="btnSim">Sim</button>
     <button class="no" onclick="alert('Tadinha da Isa 😭')">Não</button>
   </div>
+<script>
 
-  <script>
-    function goToStage2() {
+     function goToStage2() {
       document.getElementById("stage1").style.display = "none";
       document.getElementById("stage2").style.display = "block";
     }
@@ -109,6 +109,6 @@
       e.preventDefault();
       moveButton();
     });
-  </script>
+</script>
 </body>
 </html>
